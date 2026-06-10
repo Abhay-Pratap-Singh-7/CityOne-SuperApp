@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "/Users/abhay/Downloads/cityoneapp/linux"
+    "cmake.sourceDirectory": "/Users/abhay/Downloads/cityoneapp/linux",
+    "python-envs.defaultEnvManager": "ms-python.python:system"
 }

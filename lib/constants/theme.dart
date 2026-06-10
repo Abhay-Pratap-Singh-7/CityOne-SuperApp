@@ -23,7 +23,7 @@ class CityOneTheme {
   // ===========================================================================
   // 3. COLOR SCHEME
   // ===========================================================================
-  static const ColorScheme _colorScheme = ColorScheme(
+  static const ColorScheme colorScheme = ColorScheme(
     brightness: Brightness.light,
     
     // Primary (Vibrant Yellow / Darker accents)
@@ -56,7 +56,7 @@ class CityOneTheme {
     onSurfaceVariant: Color(0xFF4F4633),
     
     // Outlines & Inverses
-    outline: Color(0xFF817660),
+    outline: Color.fromARGB(255, 197, 197, 197),
     outlineVariant: Color(0xFFD3C5AC),
     inverseSurface: Color(0xFF2F3131),
     onInverseSurface: Color(0xFFF1F1F1),
@@ -72,9 +72,9 @@ class CityOneTheme {
   // ===========================================================================
   // 4. TYPOGRAPHY
   // ===========================================================================
-  static const String _fontFamily = 'Inter';
+  static const String _fontFamily = 'comfortaa';
 
-  static const TextTheme _textTheme = TextTheme(
+  static const TextTheme fontTheme = TextTheme(
     // headline-lg
     displayLarge: TextStyle(
       fontFamily: _fontFamily,
@@ -133,6 +133,28 @@ class CityOneTheme {
       height: 14.0 / 11.0,
       color: solidBlack,
     ),
+    // title-large
+    titleLarge: TextStyle(
+      fontFamily: _fontFamily,
+      fontSize: 19,
+      fontWeight: FontWeight.w700,
+      height: 14.0 / 11.0,
+      color: solidBlack,
+    ),
+    titleMedium: TextStyle(
+      fontFamily: _fontFamily,
+      fontSize: 14.0,
+      fontWeight: FontWeight.w500,
+      height: 14.0 / 11.0,
+      color: solidBlack,
+    ),
+    titleSmall: TextStyle(
+      fontFamily: _fontFamily,
+      fontSize: 12.0,
+      fontWeight: FontWeight.w500,
+      height: 14.0 / 11.0,
+      color: solidBlack,
+    ),
   );
 
   // ===========================================================================
@@ -141,15 +163,15 @@ class CityOneTheme {
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
-      colorScheme: _colorScheme,
+      colorScheme: colorScheme,
       scaffoldBackgroundColor: cleanWhite,
-      textTheme: _textTheme,
+      textTheme: fontTheme,
       
       // -- BUTTONS --
       // Primary Buttons: Large, pill-shaped, Yellow background, Black text.
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: _colorScheme.primaryContainer,
+          backgroundColor: colorScheme.primaryContainer,
           foregroundColor: solidBlack,
           elevation: 0, // Flat 2.0 aesthetic
           minimumSize: const Size.fromHeight(56), // Minimum touch target + one-handed thumb use
@@ -199,7 +221,7 @@ class CityOneTheme {
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radiusDefault),
-          borderSide: BorderSide(color: _colorScheme.error, width: 2.0),
+          borderSide: BorderSide(color: colorScheme.error, width: 2.0),
         ),
       ),
 
@@ -238,7 +260,7 @@ class CityOneTheme {
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        selectedItemColor: _colorScheme.primaryContainer, // Vibrant Yellow
+        selectedItemColor: colorScheme.primaryContainer, // Vibrant Yellow
         unselectedItemColor: solidBlack,
         selectedIconTheme: const IconThemeData(size: 28, weight: 600),
         unselectedIconTheme: const IconThemeData(size: 24, weight: 400),

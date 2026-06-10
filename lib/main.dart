@@ -1,3 +1,5 @@
+import 'package:cityoneapp/constants/theme.dart';
+import 'package:cityoneapp/router/app_router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,6 +11,10 @@ class CityOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp.router(
+      routerConfig: appRouter,
+      debugShowCheckedModeBanner: false,
+      theme: CityOneTheme.lightTheme,
+    );
   }
 }
