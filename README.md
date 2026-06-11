@@ -73,13 +73,35 @@ Ensure you have the following installed:
 
 ## 📱 Screenshots
 
-> **Note:** Add your app screenshots to an `assets/screenshots/` directory and uncomment the table below to showcase your app.
+Here's a complete look at the CityOne SuperApp features:
 
-<!--
-| Home Dashboard | Transport Hub | Profile Hub |
+### Welcome & Authentication
+| | | |
 |:---:|:---:|:---:|
-| <img src="assets/screenshots/home.png" width="200"/> | <img src="assets/screenshots/ride.png" width="200"/> | <img src="assets/screenshots/profile.png" width="200"/> |
--->
+| <img src="assets/screenshots/welcome_screen/1.png" width="200"/> | <img src="assets/screenshots/welcome_screen/2.png" width="200"/> | <img src="assets/screenshots/welcome_screen/3.png" width="200"/> |
+| <img src="assets/screenshots/welcome_screen/4.png" width="200"/> | <img src="assets/screenshots/Auth/1.jpg" width="200"/> | <img src="assets/screenshots/Auth/2.jpg" width="200"/> |
+| <img src="assets/screenshots/Auth/3.jpg" width="200"/> | | |
+
+### Home, Profile & Notifications
+| | | |
+|:---:|:---:|:---:|
+| <img src="assets/screenshots/home/home.jpg" width="200"/> | <img src="assets/screenshots/profile/profile.jpg" width="200"/> | <img src="assets/screenshots/profile/1.jpg" width="200"/> |
+| <img src="assets/screenshots/notification/notification.jpg" width="200"/> | | |
+
+### Transport Hub (Ride) & Hotel
+| | | |
+|:---:|:---:|:---:|
+| <img src="assets/screenshots/ride/1.jpg" width="200"/> | <img src="assets/screenshots/ride/2.jpg" width="200"/> | <img src="assets/screenshots/ride/3.jpg" width="200"/> |
+| <img src="assets/screenshots/ride/4.jpg" width="200"/> | <img src="assets/screenshots/hotel/1.jpg" width="200"/> | <img src="assets/screenshots/hotel/2.jpg" width="200"/> |
+| <img src="assets/screenshots/hotel/3.jpg" width="200"/> | <img src="assets/screenshots/hotel/4.jpg" width="200"/> | |
+
+### Grocery, Cart & Orders
+| | | |
+|:---:|:---:|:---:|
+| <img src="assets/screenshots/grocery/1.jpg" width="200"/> | <img src="assets/screenshots/grocery/2.jpg" width="200"/> | <img src="assets/screenshots/grocery/3.jpg" width="200"/> |
+| <img src="assets/screenshots/grocery/4.jpg" width="200"/> | <img src="assets/screenshots/cart/1.jpg" width="200"/> | <img src="assets/screenshots/cart/2.jpg" width="200"/> |
+| <img src="assets/screenshots/cart/3.jpg" width="200"/> | <img src="assets/screenshots/cart/4.jpg" width="200"/> | <img src="assets/screenshots/cart/5.jpg" width="200"/> |
+| <img src="assets/screenshots/cart/6.jpg" width="200"/> | <img src="assets/screenshots/order/order.jpg" width="200"/> | |
 
 ---
 *Built with ❤️ using Flutter.*
