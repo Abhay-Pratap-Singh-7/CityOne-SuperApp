@@ -17,14 +17,14 @@ class _ReviewCartScreenState extends State<ReviewCartScreen> {
       "name": "Shimla Apples, 500g",
       "price": 140,
       "qty": 1,
-      "img": "19"
+      "img": "https://img.icons8.com/?size=100&id=dBmKhyC3hEFd&format=png&color=000000"
     },
     {
       "id": "2",
       "name": "Organic Bananas, 1 Dozen",
       "price": 80,
       "qty": 2,
-      "img": "20"
+      "img": "https://img.icons8.com/?size=100&id=p7YHa8almDEQ&format=png&color=000000"
     },
   ];
 
@@ -265,7 +265,7 @@ class _CartItemCard extends StatelessWidget {
             ),
             clipBehavior: Clip.hardEdge,
             child: Image.network(
-              'http://googleusercontent.com/profile/picture/$img',
+              img,
               fit: BoxFit.cover,
               errorBuilder: (_, _, _) => Icon(Icons.image, color: colorScheme.secondary),
             ),

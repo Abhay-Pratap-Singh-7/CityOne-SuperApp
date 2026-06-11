@@ -1,5 +1,8 @@
+import 'package:cityoneapp/screens/activity_history_screen.dart';
 import 'package:cityoneapp/screens/home_screen.dart';
 import 'package:cityoneapp/screens/notification_hub.dart';
+import 'package:cityoneapp/screens/profile_hub_screen.dart';
+import 'package:cityoneapp/screens/ride/unified_transport_hub_screen.dart';
 import 'package:cityoneapp/widgets/main_shell.dart';
 import 'package:cityoneapp/screens/OnBoarding&Auth/welcome_screen.dart';
 import 'package:cityoneapp/screens/OnBoarding&Auth/login_screen.dart';
@@ -49,7 +52,7 @@ final GoRouter appRouter = GoRouter(
             GoRoute(
               path: '/orders',
               builder: (context, state) => const Scaffold(
-                body: Center(child: Text('Orders Screen Placeholder')),
+                body: ActivityHistoryScreen(),
               ),
             ),
           ],
@@ -59,7 +62,7 @@ final GoRouter appRouter = GoRouter(
             GoRoute(
               path: '/ride',
               builder: (context, state) => const Scaffold(
-                body: Center(child: Text('Ride Screen Placeholder')),
+                body: UnifiedTransportHubScreen(),
               ),
             ),
           ],
@@ -79,7 +82,7 @@ final GoRouter appRouter = GoRouter(
             GoRoute(
               path: '/profile',
               builder: (context, state) => const Scaffold(
-                body: Center(child: Text('Profile Screen Placeholder')),
+                body: ProfileHubScreen(),
               ),
             ),
           ],

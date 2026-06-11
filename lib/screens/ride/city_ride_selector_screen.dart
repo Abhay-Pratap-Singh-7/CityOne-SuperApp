@@ -1,3 +1,4 @@
+import 'package:cityoneapp/screens/ride/active_transit_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cityoneapp/constants/theme.dart';
 
@@ -60,7 +61,7 @@ class CityRideSelectorScreen extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 12),
-                  Container(width: 48, height: 6, decoration: BoxDecoration(color: colorScheme.surfaceVariant, borderRadius: BorderRadius.circular(8))),
+                  Container(width: 48, height: 6, decoration: BoxDecoration(color: colorScheme.outline, borderRadius: BorderRadius.circular(8))),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
@@ -112,7 +113,7 @@ class CityRideSelectorScreen extends StatelessWidget {
                   // BOTTOM ACTION
                   Container(
                     padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(border: Border(top: BorderSide(color: colorScheme.surfaceVariant))),
+                    decoration: BoxDecoration(border: Border(top: BorderSide(color: colorScheme.outline))),
                     child: SafeArea(
                       top: false,
                       child: Column(
@@ -137,7 +138,7 @@ class CityRideSelectorScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 12),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ActiveTransitScreen())) ,
                             style: ElevatedButton.styleFrom(minimumSize: const Size.fromHeight(56)),
                             child: const Text("Book Bike | ₹45"),
                           ),
@@ -184,7 +185,7 @@ class _VehicleOption extends StatelessWidget {
       decoration: BoxDecoration(
         color: isSelected ? colorScheme.primaryContainer : colorScheme.surface,
         borderRadius: BorderRadius.circular(CityOneTheme.radiusMd),
-        border: Border.all(color: isSelected ? colorScheme.onSurface : colorScheme.surfaceVariant, width: isSelected ? 2 : 1),
+        border: Border.all(color: isSelected ? colorScheme.onSurface : colorScheme.outline, width: isSelected ? 2 : 1),
       ),
       child: Row(
         children: [

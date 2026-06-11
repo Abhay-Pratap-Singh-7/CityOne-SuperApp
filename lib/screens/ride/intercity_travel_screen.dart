@@ -43,7 +43,7 @@ class _DateRibbon extends StatelessWidget {
 
     return Container(
       height: 72,
-      decoration: BoxDecoration(border: Border(bottom: BorderSide(color: colorScheme.surfaceVariant))),
+      decoration: BoxDecoration(border: Border(bottom: BorderSide(color: colorScheme.outline))),
       child: ListView(
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -68,7 +68,7 @@ class _DateRibbon extends StatelessWidget {
       decoration: BoxDecoration(
         color: isSelected ? colorScheme.primaryContainer : colorScheme.surface,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: isSelected ? colorScheme.onSurface : colorScheme.surfaceVariant, width: isSelected ? 2 : 1),
+        border: Border.all(color: isSelected ? colorScheme.onSurface : colorScheme.outline, width: isSelected ? 2 : 1),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -207,7 +207,7 @@ class _BusCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: colorScheme.surface,
         borderRadius: BorderRadius.circular(CityOneTheme.radiusLg),
-        border: Border.all(color: colorScheme.surfaceVariant),
+        border: Border.all(color: colorScheme.outline),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -255,7 +255,7 @@ class _BusCard extends StatelessWidget {
                       Row(
                         children: [
                           Container(width: 6, height: 6, decoration: BoxDecoration(color: colorScheme.secondary, shape: BoxShape.circle)),
-                          Expanded(child: Divider(color: colorScheme.surfaceVariant, thickness: 2)),
+                          Expanded(child: Divider(color: colorScheme.outline, thickness: 2)),
                           Container(width: 6, height: 6, decoration: BoxDecoration(color: colorScheme.secondary, shape: BoxShape.circle)),
                         ],
                       ),
@@ -294,16 +294,18 @@ class _BusCard extends StatelessWidget {
                   ),
                 ],
               ),
-              ElevatedButton(
-                onPressed: () {
-                  // Call _SeatSelectorSheet.show(context) here
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: isLowSeats ? colorScheme.surface : colorScheme.primaryContainer,
-                  foregroundColor: colorScheme.onSurface,
-                  side: isLowSeats ? BorderSide(color: colorScheme.onSurface, width: 2) : BorderSide.none,
+              IntrinsicWidth(
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Call _SeatSelectorSheet.show(context) here
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: isLowSeats ? colorScheme.surface : colorScheme.primaryContainer,
+                    foregroundColor: colorScheme.onSurface,
+                    side: isLowSeats ? BorderSide(color: colorScheme.onSurface, width: 2) : BorderSide.none,
+                  ),
+                  child: const Text("Select Seat"),
                 ),
-                child: const Text("Select Seat"),
               ),
             ],
           ),

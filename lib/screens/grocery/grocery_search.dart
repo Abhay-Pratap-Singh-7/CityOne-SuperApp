@@ -197,11 +197,11 @@ class _TrendingSection extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             clipBehavior: Clip.none,
             children: const [
-              _TrendingCard(title: "Cold Coffee", price: "₹45", icon: Icons.icecream),
+              _TrendingCard(title: "Cold Coffee", price: "₹45", url: 'https://img.icons8.com/?size=100&id=12860&format=png&color=000000',),
               SizedBox(width: 16),
-              _TrendingCard(title: "Fresh Mangoes", price: "₹120", icon: Icons.local_florist),
+              _TrendingCard(title: "Fresh Mangoes", price: "₹120", url: 'https://img.icons8.com/?size=100&id=y06NHH_kl00a&format=png&color=000000',),
               SizedBox(width: 16),
-              _TrendingCard(title: "Garlic Bread", price: "₹65", icon: Icons.bakery_dining),
+              _TrendingCard(title: "Garlic Bread", price: "₹65", url: 'https://img.icons8.com/?size=100&id=AwKd5JoNnGdo&format=png&color=000000',),
             ],
           ),
         ),
@@ -213,12 +213,12 @@ class _TrendingSection extends StatelessWidget {
 class _TrendingCard extends StatelessWidget {
   final String title;
   final String price;
-  final IconData icon;
+  final String url;
 
   const _TrendingCard({
     required this.title,
     required this.price,
-    required this.icon,
+    required this.url,
   });
 
   @override
@@ -242,7 +242,7 @@ class _TrendingCard extends StatelessWidget {
               color: colorScheme.surfaceVariant,
               borderRadius: const BorderRadius.vertical(top: Radius.circular(CityOneTheme.radiusLg)),
             ),
-            child: Icon(icon, size: 40, color: colorScheme.onSurfaceVariant),
+            child: Image.network(url),
           ),
           Padding(
             padding: const EdgeInsets.all(12.0),
@@ -407,11 +407,11 @@ class _DailyEssentialsSection extends StatelessWidget {
         const SizedBox(height: CityOneTheme.spacingStackGap),
         Row(
           children: const [
-            Expanded(child: _EssentialGridItem(title: "Eggs", imageUrl: "16")),
+            Expanded(child: _EssentialGridItem(title: "Eggs", imageUrl: "https://img.icons8.com/?size=100&id=I7MmedA7Bzff&format=png&color=000000")),
             SizedBox(width: 12),
-            Expanded(child: _EssentialGridItem(title: "Milk", imageUrl: "17")),
+            Expanded(child: _EssentialGridItem(title: "Milk", imageUrl: "https://img.icons8.com/?size=100&id=wwUGl1cL0faI&format=png&color=000000")),
             SizedBox(width: 12),
-            Expanded(child: _EssentialGridItem(title: "Bread", imageUrl: "18")),
+            Expanded(child: _EssentialGridItem(title: "Bread", imageUrl: "https://img.icons8.com/?size=100&id=k9MW3RMZHEkr&format=png&color=000000")),
           ],
         )
       ],
@@ -448,7 +448,7 @@ class _EssentialGridItem extends StatelessWidget {
               ),
               clipBehavior: Clip.hardEdge,
               child: Image.network(
-                'http://googleusercontent.com/profile/picture/$imageUrl',
+                imageUrl,
                 fit: BoxFit.cover,
                 errorBuilder: (_, __, ___) => Icon(Icons.image, color: colorScheme.secondary),
               ),

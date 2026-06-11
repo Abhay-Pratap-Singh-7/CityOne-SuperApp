@@ -24,10 +24,10 @@ class ActiveTransitScreen extends StatelessWidget {
                 Container(
                   color: colorScheme.surfaceContainer,
                   child: Image.network(
-                    'https://lh3.googleusercontent.com/aida-public/AB6AXuCRJg3wA91YND89Pu59dozJmInXpybnUF7j8EUBql1gRAFoj8lF2KM8MvHYy4-TYtqyA1pngOao0tUJ_x5tQLl_hGAk9E1bavsVhzeboi_tQFVAhto0Mcx6O5oy4BZSFBdUZHh4xXTF-Z1ygAh_cOWV1iHniSkqN21MOeMjhZVBWfNubpbXl-26jIpM2bs0QJUJLMvIHqfdmSJcPaepxJ0tM6rTQA7L-MtSTSof1RCno3EABn9OEOYUHpH2OmnermFrfmACDyETyi0',
+                    'https://imgs.search.brave.com/ovWPslyjWsQgnRKJ-ajYNQ6SxuTCWSWOXmi-ng5x0YU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTM4/NDQ1OTMzMy92ZWN0/b3IvbW9udHJlYWwt/cWMtY2l0eS12ZWN0/b3Itcm9hZC1tYXAt/Ymx1ZS10ZXh0Lmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz1P/S2k1LS1STmxhTGVP/YUM1akJTY3BLbTQ3/emdyc2ZPQ2J6Y3V4/bWdtczQ0PQ',
                     fit: BoxFit.cover,
                     width: double.infinity,
-                    errorBuilder: (_, __, ___) => const Center(child: Icon(Icons.map)),
+                    errorBuilder: (_, _, _) => const Center(child: Icon(Icons.map)),
                   ),
                 ),
                 SafeArea(
@@ -95,7 +95,7 @@ class ActiveTransitScreen extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 12),
-                  Container(width: 48, height: 6, decoration: BoxDecoration(color: colorScheme.surfaceVariant, borderRadius: BorderRadius.circular(8))),
+                  Container(width: 48, height: 6, decoration: BoxDecoration(color: colorScheme.outline, borderRadius: BorderRadius.circular(8))),
                   
                   Expanded(
                     child: ListView(
@@ -144,7 +144,7 @@ class ActiveTransitScreen extends StatelessWidget {
                                   bottom: -8,
                                   child: Container(
                                     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                                    decoration: BoxDecoration(color: colorScheme.surface, borderRadius: BorderRadius.circular(12), border: Border.all(color: colorScheme.surfaceVariant)),
+                                    decoration: BoxDecoration(color: colorScheme.surface, borderRadius: BorderRadius.circular(12), border: Border.all(color: colorScheme.outline)),
                                     child: Row(
                                       children: [
                                         Text("4.8", style: textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold)),

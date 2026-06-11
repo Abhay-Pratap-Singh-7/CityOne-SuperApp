@@ -190,14 +190,14 @@ class _AddressPickerScreenState extends State<AddressPickerScreen> {
             ),
             if (isSelected)
               Positioned(
-                top: -16,
-                right: -16,
+                top: 0,
+                right: 0,
                 child: Container(
-                  width: 32,
-                  height: 32,
+                  width: 20,
+                  height: 20,
                   decoration: BoxDecoration(
                     color: colorScheme.onSurface,
-                    borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(8)),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
                   ),
                   child: Icon(Icons.check, color: colorScheme.surface, size: 16),
                 ),

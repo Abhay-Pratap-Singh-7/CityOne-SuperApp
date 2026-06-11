@@ -1,6 +1,7 @@
 import 'package:cityoneapp/screens/city_selector_sheet.dart';
 import 'package:cityoneapp/screens/grocery/grocery_screen.dart';
 import 'package:cityoneapp/screens/cart/review_cart_screen.dart';
+import 'package:cityoneapp/screens/hotels/property_listing_screen.dart';
 import 'package:cityoneapp/screens/ride/unified_transport_hub_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cityoneapp/constants/theme.dart'; // Adjust path as needed
@@ -227,8 +228,18 @@ class _BentoGridSection extends StatelessWidget {
             badgeText: "FAST",
             nav: GroceryScreen(),
           ),
-          _BentoCard(title: "Ride", icon: Icons.local_taxi, isPrimary: false, nav: UnifiedTransportHubScreen(),),
-          _BentoCard(title: "Hotel", icon: Icons.apartment, isPrimary: false, nav: Placeholder(),),
+          _BentoCard(
+            title: "Ride",
+            icon: Icons.local_taxi,
+            isPrimary: false,
+            nav: UnifiedTransportHubScreen(),
+          ),
+          _BentoCard(
+            title: "Hotel",
+            icon: Icons.apartment,
+            isPrimary: false,
+            nav: PropertyListingScreen(),
+          ),
           _BentoCard(
             title: "Local Services",
             icon: Icons.construction,
@@ -253,7 +264,7 @@ class _BentoCard extends StatelessWidget {
     required this.icon,
     required this.isPrimary,
     this.badgeText,
-    required this.nav
+    required this.nav,
   });
 
   @override
@@ -437,11 +448,24 @@ class _TrendingSection extends StatelessWidget {
               horizontal: CityOneTheme.spacingGutter,
             ),
             children: const [
-              _TrendingItem(title: "Fresh Produce", isHot: true),
+              _TrendingItem(
+                title: "Fresh Produce",
+                isHot: true,
+                url:
+                    'https://img.icons8.com/?size=100&id=20875&format=png&color=000000',
+              ),
               SizedBox(width: 16),
-              _TrendingItem(title: "Airport Transfers"),
+              _TrendingItem(
+                title: "Airport Transfers",
+                url:
+                    'https://img.icons8.com/?size=100&id=113535&format=png&color=000000',
+              ),
               SizedBox(width: 16),
-              _TrendingItem(title: "Luxury Stays"),
+              _TrendingItem(
+                title: "Luxury Stays",
+                url:
+                    'https://img.icons8.com/?size=100&id=64714&format=png&color=000000',
+              ),
             ],
           ),
         ),
@@ -453,8 +477,13 @@ class _TrendingSection extends StatelessWidget {
 class _TrendingItem extends StatelessWidget {
   final String title;
   final bool isHot;
+  final String url;
 
-  const _TrendingItem({required this.title, this.isHot = false});
+  const _TrendingItem({
+    required this.title,
+    this.isHot = false,
+    required this.url,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -475,9 +504,7 @@ class _TrendingItem extends StatelessWidget {
                   color: colorScheme.surfaceContainerHigh,
                   borderRadius: BorderRadius.circular(CityOneTheme.radiusLg),
                 ),
-                child: const Center(
-                  child: Icon(Icons.image, size: 40, color: Colors.grey),
-                ),
+                child: Center(child: Image.network(url)),
               ),
               if (isHot)
                 Positioned(
@@ -552,13 +579,26 @@ class _DailyEssentialsSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
-              _EssentialItem(title: "Milk &\nDairy", icon: Icons.water_drop),
+              _EssentialItem(
+                title: "Milk &\nDairy",
+                url:
+                    'https://img.icons8.com/?size=100&id=eniRhc9nd07v&format=png&color=000000',
+              ),
               _EssentialItem(
                 title: "Bread &\nBakery",
-                icon: Icons.bakery_dining,
+                url:
+                    'https://img.icons8.com/?size=100&id=Q9Qt00BGzrZh&format=png&color=000000',
               ),
-              _EssentialItem(title: "Fresh\nVeggies", icon: Icons.grass),
-              _EssentialItem(title: "Fresh\nFruits", icon: Icons.apple),
+              _EssentialItem(
+                title: "Fresh\nVeggies",
+                url:
+                    'https://img.icons8.com/?size=100&id=cIkKyNmTQMTr&format=png&color=000000',
+              ),
+              _EssentialItem(
+                title: "Fresh\nFruits",
+                url:
+                    'https://img.icons8.com/?size=100&id=N3YhTjHIENLE&format=png&color=000000',
+              ),
             ],
           ),
         ],
@@ -569,34 +609,17 @@ class _DailyEssentialsSection extends StatelessWidget {
 
 class _EssentialItem extends StatelessWidget {
   final String title;
-  final IconData icon;
+  final String url;
 
-  const _EssentialItem({required this.title, required this.icon});
+  const _EssentialItem({required this.title, required this.url});
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
     return Column(
       children: [
-        Container(
-          width: 64,
-          height: 64,
-          decoration: BoxDecoration(
-            color: colorScheme.surface,
-            shape: BoxShape.circle,
-            border: Border.all(color: colorScheme.outline),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                blurRadius: 4,
-                offset: const Offset(0, 2),
-              ),
-            ],
-          ),
-          child: Icon(icon, color: colorScheme.onSurfaceVariant),
-        ),
+        SizedBox(width: 64, height: 64, child: Image.network(url)),
         const SizedBox(height: 4),
         Text(
           title,

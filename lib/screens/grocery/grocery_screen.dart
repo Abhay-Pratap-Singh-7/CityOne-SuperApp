@@ -258,19 +258,19 @@ class _GroceryScreenState extends State<GroceryScreen> {
                                 // Mock data parsing
                                 final mockData = [
                                   {
-                                    "img": "10",
+                                    "img": "https://img.icons8.com/?size=100&id=dBmKhyC3hEFd&format=png&color=000000",
                                     "title": "Shimla Apples",
                                     "qty": "4 pcs - 500g",
                                     "price": "140",
                                   },
                                   {
-                                    "img": "11",
+                                    "img": "https://img.icons8.com/?size=100&id=p7YHa8almDEQ&format=png&color=000000",
                                     "title": "Robusta Bananas",
                                     "qty": "6 pcs",
                                     "price": "60",
                                   },
                                   {
-                                    "img": "12",
+                                    "img": "https://img.icons8.com/?size=100&id=If0zoGgGYkN5&format=png&color=000000",
                                     "title": "Nagpur Oranges",
                                     "qty": "1 kg",
                                     "price": "120",
@@ -285,8 +285,7 @@ class _GroceryScreenState extends State<GroceryScreen> {
                                     ),
                                   ),
                                   child: _ProductCard(
-                                    imageUrl:
-                                        'http://googleusercontent.com/profile/picture/${mockData[index]["img"]}',
+                                    imageUrl: mockData[index]["img"]!,
                                     title: mockData[index]["title"]!,
                                     quantity: mockData[index]["qty"]!,
                                     price: mockData[index]["price"]!,

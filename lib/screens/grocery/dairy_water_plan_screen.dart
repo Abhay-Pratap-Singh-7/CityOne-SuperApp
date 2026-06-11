@@ -321,7 +321,7 @@ class _SubscriptionCard extends StatelessWidget {
                 ),
               ),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -352,7 +352,7 @@ class _SubscriptionCard extends StatelessWidget {
                             ),
                             Text(
                               subtitle,
-                              style: textTheme.displaySmall?.copyWith(
+                              style: textTheme.bodySmall?.copyWith(
                                 color: colorScheme.secondary,
                               ),
                             ),
@@ -380,32 +380,36 @@ class _SubscriptionCard extends StatelessWidget {
                         SizedBox(
                           height: 36,
                           child: isPrimaryStyle
-                              ? ElevatedButton(
-                                  onPressed: () {},
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: colorScheme.primaryContainer,
-                                    foregroundColor: colorScheme.onSurface,
-                                    elevation: 0,
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 20,
+                              ? IntrinsicWidth(
+                                child: ElevatedButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: colorScheme.primaryContainer,
+                                      foregroundColor: colorScheme.onSurface,
+                                      elevation: 0,
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 20,
+                                      ),
                                     ),
+                                    child: const Text('Select'),
                                   ),
-                                  child: const Text('Select'),
-                                )
-                              : OutlinedButton(
-                                  onPressed: () {},
-                                  style: OutlinedButton.styleFrom(
-                                    foregroundColor: colorScheme.onSurface,
-                                    side: BorderSide(
-                                      color: colorScheme.onSurface,
-                                      width: 2,
+                              )
+                              : IntrinsicWidth(
+                                child: OutlinedButton(
+                                    onPressed: () {},
+                                    style: OutlinedButton.styleFrom(
+                                      foregroundColor: colorScheme.onSurface,
+                                      side: BorderSide(
+                                        color: colorScheme.onSurface,
+                                        width: 2,
+                                      ),
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 20,
+                                      ),
                                     ),
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 20,
-                                    ),
+                                    child: const Text('Select'),
                                   ),
-                                  child: const Text('Select'),
-                                ),
+                              ),
                         ),
                       ],
                     ),

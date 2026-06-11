@@ -1,3 +1,5 @@
+import 'package:cityoneapp/screens/ride/city_ride_selector_screen.dart';
+import 'package:cityoneapp/screens/ride/intercity_travel_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cityoneapp/constants/theme.dart';
 
@@ -63,7 +65,9 @@ class _RideTypeToggle extends StatelessWidget {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               elevation: 0,
             ),
+            // FIX 1: Added MainAxisSize.min to prevent infinite height crashes
             child: Column(
+              mainAxisSize: MainAxisSize.min, 
               children: [
                 const Icon(Icons.directions_car, size: 32),
                 const SizedBox(height: 8),
@@ -76,15 +80,18 @@ class _RideTypeToggle extends StatelessWidget {
         const SizedBox(width: 12),
         Expanded(
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => IntercityTravelScreen())),
             style: ElevatedButton.styleFrom(
-              backgroundColor: colorScheme.surfaceContainerLow,
+              // Using outline as a safe fallback for older Flutter SDKs
+              backgroundColor: colorScheme.outline.withOpacity(0.5),
               foregroundColor: colorScheme.secondary,
               padding: const EdgeInsets.symmetric(vertical: 16),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               elevation: 0,
             ),
+            // FIX 1: Added MainAxisSize.min
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 const Icon(Icons.directions_bus, size: 32),
                 const SizedBox(height: 8),
@@ -107,84 +114,93 @@ class _LocationInputCard extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
+    // FIX 2: Rebuilt using Rows and Columns instead of arbitrary Stack positionings 
+    // to guarantee it never throws a negative constraint exception.
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: colorScheme.surface,
         borderRadius: BorderRadius.circular(CityOneTheme.radiusLg),
-        border: Border.all(color: colorScheme.surfaceVariant),
+        border: Border.all(color: colorScheme.outline),
         boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.04), blurRadius: 8)],
       ),
-      child: Stack(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Vertical dotted line
-          Positioned(
-            left: 13,
-            top: 36,
-            bottom: 36,
-            child: Container(
-              width: 2,
-              decoration: BoxDecoration(
-                border: Border(left: BorderSide(color: colorScheme.surfaceVariant, style: BorderStyle.solid, width: 2)), // Use solid as flutter lacks native dotted
-              ),
-            ),
-          ),
+          // Visual Route Line Indicator
           Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              // Pickup
-              Row(
-                children: [
-                  Container(
-                    width: 28,
-                    alignment: Alignment.center,
-                    child: Container(width: 10, height: 10, decoration: BoxDecoration(color: const Color(0xFF10B981), shape: BoxShape.circle, border: Border.all(color: const Color(0xFF10B981).withOpacity(0.2), width: 4))),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                      decoration: BoxDecoration(color: colorScheme.surface, borderRadius: BorderRadius.circular(8), border: Border.all(color: colorScheme.surfaceVariant)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Pickup", style: textTheme.labelSmall?.copyWith(color: colorScheme.secondary)),
-                          Text("Current Location", style: textTheme.bodyLarge),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+              Container(
+                width: 10, height: 10,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF10B981),
+                  shape: BoxShape.circle,
+                  border: Border.all(color: const Color(0xFF10B981).withOpacity(0.3), width: 2)
+                )
               ),
-              const SizedBox(height: 16),
-              // Drop
-              Row(
-                children: [
-                  Container(
-                    width: 28,
-                    alignment: Alignment.center,
-                    child: Container(width: 10, height: 10, decoration: BoxDecoration(color: const Color(0xFFEF4444), borderRadius: BorderRadius.circular(2), border: Border.all(color: const Color(0xFFEF4444).withOpacity(0.2), width: 4))),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-                      decoration: BoxDecoration(color: colorScheme.surface, borderRadius: BorderRadius.circular(8), border: Border.all(color: colorScheme.surfaceVariant)),
-                      child: Text("Where to?", style: textTheme.bodyLarge?.copyWith(color: colorScheme.secondary)),
-                    ),
-                  ),
-                ],
+              Container(
+                width: 2,
+                height: 48, // Fixed height connector
+                color: colorScheme.outline,
+              ),
+              Container(
+                width: 10, height: 10,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFEF4444),
+                  borderRadius: BorderRadius.circular(2),
+                  border: Border.all(color: const Color(0xFFEF4444).withOpacity(0.3), width: 2)
+                )
               ),
             ],
           ),
-          // Swap Button
-          Positioned(
-            right: 0,
-            top: 40,
-            child: CircleAvatar(
-              radius: 16,
-              backgroundColor: colorScheme.surfaceContainer,
-              child: Icon(Icons.swap_vert, size: 18, color: colorScheme.onSurface),
+          const SizedBox(width: 16),
+          
+          // Input Fields
+          Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Pickup
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: colorScheme.surface,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: colorScheme.outline)
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Pickup", style: textTheme.labelSmall?.copyWith(color: colorScheme.secondary)),
+                      Text("Current Location", style: textTheme.bodyLarge),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 12),
+                
+                // Dropoff
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+                  decoration: BoxDecoration(
+                    color: colorScheme.surface,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: colorScheme.outline)
+                  ),
+                  child: Text("Where to?", style: textTheme.bodyLarge?.copyWith(color: colorScheme.secondary)),
+                ),
+              ],
             ),
+          ),
+          const SizedBox(width: 12),
+          
+          // Swap Button
+          CircleAvatar(
+            radius: 16,
+            backgroundColor: colorScheme.outline.withOpacity(0.5),
+            child: Icon(Icons.swap_vert, size: 18, color: colorScheme.onSurface),
           )
         ],
       ),
@@ -199,30 +215,52 @@ class _QuickFilters extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return Row(
-      children: [
-        OutlinedButton.icon(
-          onPressed: () {},
-          icon: const Icon(Icons.schedule, size: 16),
-          label: const Text("Today"),
-          style: OutlinedButton.styleFrom(
-            foregroundColor: colorScheme.onSurface,
-            side: BorderSide(color: colorScheme.onSurface, width: 2),
-            shape: const StadiumBorder(),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IntrinsicWidth(
+            child: OutlinedButton(
+              onPressed: () {},
+              style: OutlinedButton.styleFrom(
+                foregroundColor: colorScheme.onSurface,
+                side: BorderSide(color: colorScheme.onSurface, width: 2),
+                shape: const StadiumBorder(),
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap, // ← ADD THIS
+              ),
+              child: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.schedule, size: 16),
+                  SizedBox(width: 8),
+                  Text("Today"),
+                ],
+              ),
+            ),
           ),
-        ),
-        const SizedBox(width: 12),
-        OutlinedButton.icon(
-          onPressed: () {},
-          icon: const Icon(Icons.person, size: 16),
-          label: const Text("1 Passenger"),
-          style: OutlinedButton.styleFrom(
-            foregroundColor: colorScheme.onSurface,
-            side: BorderSide(color: colorScheme.surfaceVariant),
-            shape: const StadiumBorder(),
+          const SizedBox(width: 12),
+          IntrinsicWidth(
+            child: OutlinedButton(
+              onPressed: () {},
+              style: OutlinedButton.styleFrom(
+                foregroundColor: colorScheme.onSurface,
+                side: BorderSide(color: colorScheme.outline),
+                shape: const StadiumBorder(),
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap, // ← ADD THIS
+              ),
+              child: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.person, size: 16),
+                  SizedBox(width: 8),
+                  Text("1 Passenger"),
+                ],
+              ),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -255,20 +293,30 @@ class _RecentPlaces extends StatelessWidget {
       child: Row(
         children: [
           CircleAvatar(
-            backgroundColor: colorScheme.surfaceContainer,
+            backgroundColor: colorScheme.outline.withOpacity(0.5),
             child: Icon(icon, color: colorScheme.secondary),
           ),
           const SizedBox(width: 16),
           Expanded(
-            child: Container(
-              padding: const EdgeInsets.only(bottom: 16),
-              decoration: BoxDecoration(border: Border(bottom: BorderSide(color: isLast ? Colors.transparent : colorScheme.surfaceVariant))),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(title, style: textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
-                  Text(subtitle, style: textTheme.bodySmall?.copyWith(color: colorScheme.secondary), maxLines: 1, overflow: TextOverflow.ellipsis),
-                ],
+            child: InkWell(
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CityRideSelectorScreen())),
+              child: Container(
+                padding: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  border: Border(bottom: BorderSide(color: isLast ? Colors.transparent : colorScheme.outline))
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title, style: textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
+                    Text(
+                      subtitle, 
+                      style: textTheme.bodySmall?.copyWith(color: colorScheme.secondary), 
+                      maxLines: 1, 
+                      overflow: TextOverflow.ellipsis
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
